@@ -1,11 +1,12 @@
+#!groovy
 pipeline{
 
     agent any
     parameter{
 
-        choice(name: 'Environment',
+        choice(name: 'Environment'
         choices: 'DEV','UAT','PROD','TRAINING'
         description: 'Please Select the Environment')
-        
+
     }
 }
