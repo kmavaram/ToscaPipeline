@@ -19,7 +19,13 @@ properties([
                     classpath: [], 
                     sandbox: false, 
                     script: 
-                        'return["","DEV","UAT","PROD","TRAINING"]'
+                        '''return [
+\'\',
+\'DEV\',
+\'UAT\',
+\'PROD\',
+\'TRAINING\'
+]'''
                 ]
             ]
         ]
