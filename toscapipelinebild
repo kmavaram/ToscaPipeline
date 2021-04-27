@@ -1,28 +1,11 @@
-#!groovy
-properties([
-    parameters([[
-        $class: 'ChoiceParameter', 
-        choiceType: 'PT_SINGLE_SELECT', 
-        description: 'Please Select an Environment', 
-        filterLength: 1, 
-        filterable: false, 
-        name: 'Environment', 
-        randomName: 'choice-parameter-257360873640600', 
-        script:
-            [$class: 'GroovyScript',
-            fallbackScript: 
-            [classpath: [], 
-            sandbox: false, 
-            script: 
-            'return[\'Error\']'], 
-            script: 
-                [classpath: [], 
-                sandbox: false, 
-                script: 
-                '''return [
-\'\',
-\'DEV\',
-\'UAT\',
-\'PROD\',
-\'TRAINING\'
-]''']]]])])
+pipeline{
+
+    agent any
+    parameter{
+
+        choice(name: 'Environment',
+        choices: 'DEV','UAT','PROD','TRAINING'
+        description: 'Please Select the Environment')
+        
+    }
+}
