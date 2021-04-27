@@ -30,11 +30,10 @@ properties([
             ]
         ]
 ])
-
-])
-
     parameters([
     booleanParam(
         defaultValue: false, 
         description: 'Check box if you wish to do first run (default =false)', 
         name: 'First_Run')])
+])
+
