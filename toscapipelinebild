@@ -74,4 +74,4 @@ return["", "ToscaEvent_TRAINING1_3.23"]
 return["", "ToscaEvent_TRAINING2_3.23"]
 }else {
   return["Select an DB_Version from drop down"]
-}''']]], booleanParam(defaultValue: false, description: 'Setup for first run', name: 'First_RUN')])])
+}''']]] ])])
