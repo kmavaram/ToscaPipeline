@@ -1,41 +1,30 @@
-#!groovy
 properties([
-    parameters([[
-        $class: 'ChoiceParameter', 
-        choiceType: 'PT_SINGLE_SELECT', 
-        description: 'Please Select an Environment', 
-        filterLength: 1, 
-        filterable: false, 
-        name: 'Environment', 
-        randomName: 'choice-parameter-257360873640600', 
-        script:
-            [$class: 'GroovyScript',
-            fallbackScript: 
-            [classpath: [], 
-            sandbox: false, 
-            script: 
-            'return[\'Error\']'], 
-            script: 
-                [classpath: [], 
-                sandbox: false, 
-                script: 
-                '''return [
-\'\',
-\'DEV\',
-\'UAT\',
-\'PROD\',
-\'TRAINING\'
-]''']]]]
-       
-            booleanParam(
-                defaultValue: false, 
-                description: 'Check box if you wish to do first run (default =false)', 
-                name: 'First_Run')
-                
-])
+    parameters([
+        [$class: 'ChoiceParameter', 
+            choiceType: 'PT_SINGLE_SELECT', 
+            description: 'Select the Environment from the Dropdown List', 
+            filterLength: 1, 
+            filterable: false, 
+            name: 'Environment', 
+            randomName: 'choice-parameter-5631314439613978', 
+            script: [
+                $class: 'GroovyScript', 
+                fallbackScript: [
+                    classpath: [], 
+                    sandbox: false, 
+                    script: 
+                        'return[\'Could not get Env\']'
+                ], 
+                script: [
+                    classpath: [], 
+                    sandbox: false, 
+                    script: 
+                        'return["","DEV","UAT","PROD","TRAINING"]'
+                ]
+            ]
+        ]
+
+
+
+    )]
 )]
-
-
-
-
-
