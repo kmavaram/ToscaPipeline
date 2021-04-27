@@ -1,4 +1,26 @@
 #!groovy
-@Library('step-jenkins-shared-library')_
-def Environment
-def 
+properties([
+    parameters([[
+        $class: 'ChoiceParameter', 
+        choiceType: 'PT_SINGLE_SELECT', 
+        description: 'Please Select an Environment', 
+        filterLength: 1, 
+        filterable: false, 
+        name: 'Environment', 
+        randomName: 'choice-parameter-257360873640600', 
+        script:
+            [$class: 'GroovyScript',
+            fallbackScript: 
+            [classpath: [], 
+            sandbox: false, 
+            script: 
+            'return[\'Error\']'], 
+            script: 
+                [classpath: [], 
+                sandbox: false, 
+                script: 
+                '''return [\'\', \'DEV\', \'UAT\', \'PROD\', \'TRAINING\']''']
+                ]
+            ]
+        ])
+    ])
