@@ -8,5 +8,5 @@ pipeline {
         booleanParam(defaultValue: false, description: 'Setup for first run', name: 'FIRST_RUN')
         choice(choices: ['3_22', '3_23'], description: 'Pick the Test Event number to execute' , name: 'TestEventNumber')
     }
+    ])
 }
-])
