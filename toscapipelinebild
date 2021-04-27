@@ -31,9 +31,10 @@ properties([
         ]
 
 
-    booleanParam(
-        defaultValue: false, 
-        description: 'Check box if you wish to do first run (default =false)', 
-        name: 'First_Run')])
+ parameters {
+ booleanParam(name: 'RUN_TESTS', defaultValue: false, description: 'Do you want to run the build with tests?')
+ }
+        
+        ])
 ])
 
