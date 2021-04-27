@@ -31,6 +31,9 @@ properties([
         ]
 
 
-
+        booleanParam(
+            defaultValue: false,
+            description: 'Setup for first run', 
+            name: 'FIRST_RUN')
     ])
 ])
