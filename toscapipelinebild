@@ -1,17 +1,37 @@
 #!groovy
-pipeline{
+properties([
+    parameters([[
+        $class: 'ChoiceParameter', 
+        choiceType: 'PT_SINGLE_SELECT', 
+        description: 'Please Select an Environment', 
+        filterLength: 1, 
+        filterable: false, 
+        name: 'Environment', 
+        randomName: 'choice-parameter-257360873640600', 
+        script:
+            [$class: 'GroovyScript',
+            fallbackScript: 
+            [classpath: [], 
+            sandbox: false, 
+            script: 
+            'return[\'Error\']'], 
+            script: 
+                [classpath: [], 
+                sandbox: false, 
+                script: 
+                '''return [
+\'\',
+\'DEV\',
+\'UAT\',
+\'PROD\',
+\'TRAINING\'
+]''']]]])
+        parameters([
+            booleanParam(
+                defaultValue: false, 
+                description: 'Check box if you wish to do first run (default =false)', name: 'First_Run')])
 
-    agent any
-    parameter{
 
-    choice(
-        choices: ['DEV', 'Delta', 'Golf', 'Alfa'], 
-        description: 'Please select the Environemnt', 
-        name: 'DbName')
-        booleanParam(
-            defaultValue: false, 
-            description: 'Setup for first run', 
-            name: 'FIRST_RUN')
+])
 
-    }
-}
+
