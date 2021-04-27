@@ -4,9 +4,14 @@ pipeline{
     agent any
     parameter{
 
-        choice(name: 'Environment'
-        choices: ['DEV', 'UAT', 'PROD', 'TRAINING'],
-        description: 'Please Select the Environment')
+    choice(
+        choices: ['DEV', 'Delta', 'Golf', 'Alfa'], 
+        description: 'Please select the Environemnt', 
+        name: 'DbName')
+        booleanParam(
+            defaultValue: false, 
+            description: 'Setup for first run', 
+            name: 'FIRST_RUN')
 
     }
 }
