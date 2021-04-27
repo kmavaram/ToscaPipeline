@@ -1,12 +1,37 @@
-#!groovy
+properties([
+    parameters([
+        [$class: 'ChoiceParameter', 
+            choiceType: 'PT_SINGLE_SELECT', 
+            description: 'Select the Environment from the Dropdown List', 
+            filterLength: 1, 
+            filterable: false, 
+            name: 'Environment', 
+            randomName: 'choice-parameter-5631314439613978', 
+            script: [
+                $class: 'GroovyScript', 
+                fallbackScript: [
+                    classpath: [], 
+                    sandbox: false, 
+                    script: 
+                        'return[\'Could not get Env\']'
+                ], 
+                script: [
+                    classpath: [], 
+                    sandbox: false, 
+                    script: 
+                        '''return [
+\'\',
+\'DEV\',
+\'UAT\',
+\'PROD\',
+\'TRAINING\'
+]'''
+                ]
+            ]
+        ]
 
-pipeline {
-    agent any 
-    properties([
-    parameters {
-        choice(choices: ['Bravo', 'Delta', 'Golf', 'Alfa'], description: 'Please pick the Database you\'d like the be connected to the Lol Classic Client', name: 'DbName')
-        booleanParam(defaultValue: false, description: 'Setup for first run', name: 'FIRST_RUN')
-        choice(choices: ['3_22', '3_23'], description: 'Pick the Test Event number to execute' , name: 'TestEventNumber')
-    }
-    ])
-}
+ 
+        ])
+])
+
+properties([parameters([booleanParam(defaultValue: false, description: 'Check box if you wish to do first run (default =false)', name: 'First_Run')])])
