@@ -104,15 +104,15 @@ return["", "ToscaEvent_IFX_3.23"]
 }else if (Database.equals("PG")){
 return["", "ToscaBuildEvent", "ToscaEvent_PG_3.23"]
 }else if (Database.equals("CHIP")){
-return["",  "ToscaBuildEvent", "ToscaEvent_CHIP_3.23"]
+return["", "ToscaBuildEvent", "ToscaEvent_CHIP_3.23"]
 }else if  (Database.equals("MASH")){
-return["",  "ToscaBuildEvent", "ToscaEvent_MASH_3.23"]
+return["", "ToscaBuildEvent", "ToscaEvent_MASH_3.23"]
 }else if (Database.equals("SPUD")){
-return["",  "ToscaBuildEvent", "ToscaEvent_SPUD_3.23"]
+return["", "ToscaBuildEvent", "ToscaEvent_SPUD_3.23"]
 }else if (Database.equals("PROD")){
-return["",  "ToscaBuildEvent", "ToscaEvent_PROD_3.23"]
+return["", "ToscaBuildEvent", "ToscaEvent_PROD_3.23"]
 }else if (Database.equals("TRAINING1")){
-return["",  "ToscaBuildEvent", "ToscaEvent_TRAINING1_3.22"]
+return["", "ToscaBuildEvent", "ToscaEvent_TRAINING1_3.22"]
 }else if (Database.equals("TRAINING2")){
 return["",  "ToscaBuildEvent", "ToscaEvent_TRAINING2_3.23"]
 }else {
