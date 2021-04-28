@@ -99,7 +99,8 @@ return["", "3.23"]
         script: 'return["***UNKNOWN DB VERSION***"]'], 
         script: [classpath: [], 
         sandbox: false, 
-        script: '''if (Database.equals("IFX")){
+        script: 
+'''if (Database.equals("IFX")){
 return["", "ToscaEvent_IFX_3.23"]
 }else if (Database.equals("PG")){
 return["", "ToscaEvent_PG_3.23"]
