@@ -52,7 +52,7 @@ return["", "TRAINING1", "TRAINING2"]
         description: 'Please Select an DB_Version', 
         filterLength: 1, 
         filterable: false, 
-        name: '', 
+        name: 'DB_Version', 
         randomName: 'choice-parameter-331211218615800', 
         referencedParameters: 'Database', 
         script: 
