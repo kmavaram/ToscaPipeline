@@ -100,7 +100,7 @@ return["", "3.23"]
         script: [classpath: [], 
         sandbox: false, 
         script: '''if (Database.equals("IFX")){
-return["", "ToscaEvent_IFX_3.23"]
+return["","ToscaBuildEvent", "ToscaEvent_IFX_3.23"]
 }else if (Database.equals("PG")){
 return["", "ToscaBuildEvent", "ToscaEvent_PG_3.23"]
 }else if (Database.equals("CHIP")){
