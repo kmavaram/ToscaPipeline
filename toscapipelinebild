@@ -121,10 +121,11 @@ return["", "ToscaEvent_TRAINING2_3.23"]
 booleanParam(
     defaultValue: false, 
     description: '''Check box if you wish to do first run (default =false) 
-                    Start New Agent from the selection
+                    Start New Agent from the selection above
                     Install all required installers to Trigger Events''', 
     name: 'First_Run')
     
     ])
 
 ])
+
