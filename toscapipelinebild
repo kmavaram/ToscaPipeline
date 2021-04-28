@@ -102,19 +102,19 @@ return["", "3.23"]
         script: '''if (Database.equals("IFX")){
 return["", "ToscaEvent_IFX_3.23"]
 }else if (Database.equals("PG")){
-return["", "ToscaEvent_PG_3.23"]
+return["", "ToscaBuildEvent", "ToscaEvent_PG_3.23"]
 }else if (Database.equals("CHIP")){
-return["", "ToscaEvent_CHIP_3.23"]
+return["",  "ToscaBuildEvent", "ToscaEvent_CHIP_3.23"]
 }else if  (Database.equals("MASH")){
-return["", "ToscaEvent_MASH_3.23"]
+return["",  "ToscaBuildEvent", "ToscaEvent_MASH_3.23"]
 }else if (Database.equals("SPUD")){
-return["", "ToscaEvent_SPUD_3.23"]
+return["",  "ToscaBuildEvent", "ToscaEvent_SPUD_3.23"]
 }else if (Database.equals("PROD")){
-return["", "ToscaEvent_PROD_3.23"]
+return["",  "ToscaBuildEvent", "ToscaEvent_PROD_3.23"]
 }else if (Database.equals("TRAINING1")){
-return["", "ToscaEvent_TRAINING1_3.22"]
+return["",  "ToscaBuildEvent", "ToscaEvent_TRAINING1_3.22"]
 }else if (Database.equals("TRAINING2")){
-return["", "ToscaEvent_TRAINING2_3.23"]
+return["",  "ToscaBuildEvent", "ToscaEvent_TRAINING2_3.23"]
 }else {
   return["Select an DB_Version from drop down"]
 }''']]], 
