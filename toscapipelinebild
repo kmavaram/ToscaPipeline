@@ -1,3 +1,5 @@
+pipeline {
+   agent none 
 properties([parameters
 ([choice(choices: ['', 'DEV', 'UAT', 'PROD', 'TRAINING'], description: 'Please Select an Environment', name: 'Environment'), 
 booleanParam(defaultValue: false, description: 'Check box if you wish to do first run (default =false)', name: 'First_Run'), 
@@ -7,3 +9,4 @@ choice(choices: ['', 'ToscaEvent_IFX_3.23', 'ToscaEvent_PG_3.23', 'ToscaEvent_TR
 
 ])
 ])
+}
