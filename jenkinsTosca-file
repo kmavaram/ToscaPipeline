@@ -144,7 +144,7 @@ Pipeline{
 
                 powershell """
                                      
-                   echo "Executing Test Event $FileName"
+                   echo "Executing Test Event ToscaEvent_IFX_3.23"
                     & curl -u linztosca:1158eb2d1104c3246a2f2179dc3b70c26e http://prdasstosca01.ad.linz.govt.nz:81/Rest/ToscaCommander/LINZ_Repo/object/39fbf953-7622-ba0e-985d-00b1b8cfabb8/task/ExecuteNow
 
                """
