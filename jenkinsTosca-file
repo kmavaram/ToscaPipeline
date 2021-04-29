@@ -140,15 +140,28 @@ Pipeline{
         
         stage("Run Tosca Test based on selection"){
             
-            steps{
-
-                powershell """
-                                     
-                   echo "Executing Test Event ToscaEvent_IFX_3.23"
-                    & curl -u linztosca:1158eb2d1104c3246a2f2179dc3b70c26e http://prdasstosca01.ad.linz.govt.nz:81/Rest/ToscaCommander/LINZ_Repo/object/39fbf953-7622-ba0e-985d-00b1b8cfabb8/task/ExecuteNow
-
-               """
-            }
+script {
+                    switch(params.DbName) {
+                        case 'Bravo':
+                            dataBaseName = "bravo";
+                            dataBasePort = "12504";
+                        case 'Delta':
+                            dataBaseName = "delta";
+                            dataBasePort = "12507";
+                        case 'Golf':
+                            dataBaseName = "golf";
+                            dataBasePort = "12506";
+                        case 'Alfa':
+                            dataBaseName = "alfa";
+                            dataBasePort = "12509";
+                    }
+                    switch(params.TestEventNumber) {
+                        case '3_22':
+                            FileName = "EC2-DMAUTOREG-HP_3_22.xml";
+                        case '3_23':
+                            FileName = "EC2-DMAUTOREG-HP_3_23.xml";
+                    }
+                }
         }
     }
 }           
