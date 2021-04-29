@@ -138,26 +138,16 @@ Pipeline{
 
     stages{
         
-        stage("build Pipeline"){
+        stage("Run Tosca Test based on selection"){
             
             steps{
 
-                echo 'building the Pipeline'
-            }
-        }
+                powershell """
+                                     
+                   echo "Executing Test Event $FileName"
+                    & curl -u linztosca:1158eb2d1104c3246a2f2179dc3b70c26e http://prdasstosca01.ad.linz.govt.nz:81/Rest/ToscaCommander/LINZ_Repo/object/39fbf953-7622-ba0e-985d-00b1b8cfabb8/task/ExecuteNow
 
-        stage ("test Pipeline"){
-
-            steps{
-
-                echo 'testing Pipeline'
-            }
-        }
-        stage ("deploy build")
-
-            steps{
-
-                echo 'deploy Pipeline'
+               """
             }
     }
 }           
