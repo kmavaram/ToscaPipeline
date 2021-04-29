@@ -1,0 +1,133 @@
+properties([
+    parameters([
+    [$class: 'ChoiceParameter', 
+        choiceType: 'PT_SINGLE_SELECT', 
+        description: 'Please Select an Environment', 
+        filterLength: 1, 
+        filterable: false, 
+        name: 'Environment', 
+        randomName: 'choice-parameter-331211215156300', 
+        script: [$class: 'GroovyScript', 
+        fallbackScript: 
+        [classpath: [], 
+        sandbox: false, 
+        script: 'return[\'Error\']'], 
+        script: [classpath: [], 
+        sandbox: false, 
+        script: '''return [
+\'\',
+\'DEV\',
+\'UAT\',
+\'PROD\',
+\'TRAINING\'
+]''']]], 
+    [$class: 'CascadeChoiceParameter', 
+        choiceType: 'PT_SINGLE_SELECT', 
+        description: 'Please Select an Database', 
+        filterLength: 1, 
+        filterable: false, 
+        name: 'Database', 
+        randomName: 'choice-parameter-331211216910300', 
+        referencedParameters: 'Environment', 
+        script: [$class: 'GroovyScript', 
+        fallbackScript: 
+        [classpath: [], 
+        sandbox: false, 
+        script: 'return["***UNKNOWN Environment***"]'], 
+        script: [classpath: [], 
+        sandbox: false, 
+        script: '''if (Environment.equals("DEV")){
+return["", "IFX", "PG"]
+}else if (Environment.equals("UAT")){
+return["", "CHIP", "MASH", "SPUD"]
+}else if (Environment.equals("PROD")){
+return["", "PROD"]
+}else if (Environment.equals("TRAINING")){
+return["", "TRAINING1", "TRAINING2"]
+}else {
+  return["Select an Environment from drop down"]
+}''']]], 
+    [$class: 'CascadeChoiceParameter', 
+        choiceType: 'PT_SINGLE_SELECT', 
+        description: 'Please Select an DB_Version', 
+        filterLength: 1, 
+        filterable: false, 
+        name: 'DB_Version', 
+        randomName: 'choice-parameter-331211218615800', 
+        referencedParameters: 'Database', 
+        script: 
+        [$class: 'GroovyScript', 
+        fallbackScript: 
+        [classpath: [], 
+        sandbox: false, 
+        script: 'return["***UNKNOWN Database***"]'], 
+        script: 
+        [classpath: [], 
+        sandbox: false, 
+        script: '''if (Database.equals("IFX")){
+return["", "3.23"]
+}else if (Database.equals("PG")){
+return["", "3.23"]
+}else if (Database.equals("CHIP")){
+return["", "3.23"]
+}else if (Database.equals("MASH")){
+return["", "3.23"]
+}else if (Database.equals("SPUD")){
+return["", "3.23"]
+}else if (Database.equals("PROD")){
+return["", "3.23"]
+}else if (Database.equals("TRAINING1")){
+return["", "3.22"]
+}else if (Database.equals("TRAINING2")){
+return["", "3.23"]
+}else {
+  return["Select an Database from drop down"]
+}''']]], 
+    [$class: 'CascadeChoiceParameter', 
+        choiceType: 'PT_SINGLE_SELECT', 
+        description: 'Please Select an ToscaTestEvent', 
+        filterLength: 1, 
+        filterable: false, 
+        name: 'ToscaTestEvent', 
+        randomName: 'choice-parameter-331211220236800', 
+        referencedParameters: 'Environment,Database,DB_Version', 
+        script:
+        [$class: 'GroovyScript', 
+        fallbackScript: 
+        [classpath: [], 
+        sandbox: false,
+        script: 'return["***UNKNOWN DB VERSION***"]'], 
+        script: [classpath: [], 
+        sandbox: false, 
+        script: 
+'''if (Database.equals("IFX")){
+return["", "ToscaEvent_IFX_3.23"]
+}else if (Database.equals("PG")){
+return["", "ToscaEvent_PG_3.23"]
+}else if (Database.equals("CHIP")){
+return["", "ToscaEvent_CHIP_3.23"]
+}else if  (Database.equals("MASH")){
+return["", "ToscaEvent_MASH_3.23"]
+}else if (Database.equals("SPUD")){
+return["", "ToscaEvent_SPUD_3.23"]
+}else if (Database.equals("PROD")){
+return["", "ToscaEvent_PROD_3.23"]
+}else if (Database.equals("TRAINING1")){
+return["", "ToscaEvent_TRAINING1_3.22"]
+}else if (Database.equals("TRAINING2")){
+return["", "ToscaEvent_TRAINING2_3.23"]
+}else {
+  return["Select an DB_Version from drop down"]
+}''']]], 
+booleanParam(
+    defaultValue: false, 
+    description: '''Check box if you wish to do first run (default =false) 
+                    Start New Agent from the selection above
+                    Install all required installers to Trigger Events''', 
+    name: 'First_Run')
+    
+    ])
+
+])
+
+
