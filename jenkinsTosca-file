@@ -157,9 +157,9 @@ script {
                     }
                     switch(params.TestEventNumber) {
                         case '3_22':
-                            FileName = "EC2-DMAUTOREG-HP_3_22.xml";
+                            FileName = "http://prdasstosca01.ad.linz.govt.nz:81/Rest/ToscaCommander/LINZ_Repo/object/39fbf953-7622-ba0e-985d-00b1b8cfabb8/task/ExecuteNow";
                         case '3_23':
-                            FileName = "EC2-DMAUTOREG-HP_3_23.xml";
+                            FileName = "http://prdasstosca01.ad.linz.govt.nz:81/Rest/ToscaCommander/LINZ_Repo/object/39fbf953-7622-ba0e-985d-00b1b8cfabb8/task/ExecuteNow";
                     }
                 }
         }
