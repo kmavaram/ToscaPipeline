@@ -3,6 +3,27 @@ Pipeline{
     agent any
 
     stages{
+        
+        stage("build Pipeline"){
+            
+            steps{
 
+                echo 'building the Pipeline'
+            }
+        }
+
+        stage ("test Pipeline"){
+
+            steps{
+
+                echo 'testing Pipeline'
+            }
+        }
+        stage ("deploy build")
+
+            steps{
+
+                echo 'deploy Pipeline'
+            }
     }
-}   
+}           
