@@ -1,3 +1,2 @@
-rem @echo off
 
 curl "http://prdasstosca01.ad.linz.govt.nz:81/DistributionServerService/MonitorService.svc/GetAgents"
