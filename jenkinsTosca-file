@@ -126,8 +126,15 @@ booleanParam(
                     Install all required installers to Trigger Events''', 
     name: 'First_Run'),
 
-    booleanParam(defaultValue: false, description: '', name: 'Tosca_Agent'), 
-booleanParam(defaultValue: false, description: '', name: 'Tosca_Event'), 
+booleanParam(
+    defaultValue: false, 
+    description: '', 
+    name: 'Tosca_Agent'), 
+booleanParam(
+    defaultValue: false, 
+    description: '', 
+    name: 'Tosca_Event'), 
+   
 choice(choices: ['LOL HP Instrument 3.23', 'LOL HP Combined Instrument 3.23'], description: '', name: 'ToscaTest_Event')
     
     ])
