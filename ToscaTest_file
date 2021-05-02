@@ -144,12 +144,9 @@ stage('Get Tosca Agents') {
             steps {
                 script {
                     def Agents = httpRequest 'http://prdasstosca01.ad.linz.govt.nz:81/DistributionServerService/MonitorService.svc/GetAgents'
-                    def AgentsRC = Agents.getResponseCode();
-                     println("Status: "+Agents.status)
+                    println("Status: "+Agents.status)
                      println("Content: "+Agents.content)
-                    if(AgentsRC.equals(200)) {
-                    println(Agents.getInputStream().getText());
-                    }
+
               }
        }
 
@@ -162,12 +159,8 @@ stage('Get Tosca Agents') {
                 script {
                     
                      def Events = httpRequest 'http://prdasstosca01.ad.linz.govt.nz:81/DistributionServerService/MonitorService.svc/GetTestEvents'
-                     def EventsRC = Events.getResponseCode();
                      println("Status: "+Events.status)
                      println("Content: "+Events.content)
-                    if(EventsRC.equals(200)) {
-                    println(Events.getInputStream().getText());
-                    }
         
               }
        }
