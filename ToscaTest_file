@@ -132,8 +132,6 @@ choice(choices: ['', 'LOL HP Instrument 3.23', 'LOL HP Combined Instrument 3.23'
 
 ])
 
-
-
 pipeline {
     agent any
 
