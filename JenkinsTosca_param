@@ -11,25 +11,25 @@ properties([parameters([[$class: 'CascadeChoiceParameter', choiceType: 'PT_SINGL
 \'DR-ENV-IFX\',
 \'DR-ENV-PG\'
 ]''']]], [$class: 'CascadeChoiceParameter', choiceType: 'PT_SINGLE_SELECT', description: 'Please select Database', filterLength: 1, filterable: false, name: 'Database', randomName: 'choice-parameter-137338786088700', referencedParameters: 'Environment', script: [$class: 'GroovyScript', fallbackScript: [classpath: [], sandbox: false, script: 'return[\'Error\']'], script: [classpath: [], sandbox: false, script: '''if (Environment.equals("DEV-IFX")){
-return["", "Informix"]
+return["Informix"]
 }else if (Environment.equals("DEV-PG")){
-return["", "PostgreSQL"]
+return["PostgreSQL"]
 }else if (Environment.equals("UAT-IFX")){
-return["", "Informix"]
+return["Informix"]
 }else if (Environment.equals("UAT-PG")){
-return["", "PostgreSQL"]
+return["PostgreSQL"]
 }else if (Environment.equals("TRAINING-IFX")){
-return["", "Informix"]
+return["Informix"]
 }else if (Environment.equals("TRAINING-PG")){
-return["", "PostgreSQL"]
+return["PostgreSQL"]
 }else if (Environment.equals("PRE-PRD-IFX")){
-return["", "Informix"]
+return["Informix"]
 }else if (Environment.equals("PRE-PRD-PG")){
-return["", "PostgreSQL"]
+return["PostgreSQL"]
 }else if (Environment.equals("DR-ENV-IFX")){
-return["", "Informix"]
+return["Informix"]
 }else if (Environment.equals("DR-ENV-PG")){
-return["", "PostgreSQL"]
+return["PostgreSQL"]
 }else {
   return["Select an Environment from drop down"]
 }''']]], [$class: 'CascadeChoiceParameter', choiceType: 'PT_SINGLE_SELECT', description: 'Please select Landonline_Version', filterLength: 1, filterable: false, name: 'Landonline_Version', randomName: 'choice-parameter-137338788513600', referencedParameters: 'Environment', script: [$class: 'GroovyScript', fallbackScript: [classpath: [], sandbox: false, script: 'return[\'Error\']'], script: [classpath: [], sandbox: false, script: '''if (Environment.equals("DEV-IFX")){
