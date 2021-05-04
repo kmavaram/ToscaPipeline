@@ -115,7 +115,7 @@ properties([
             }''']]], 
         [$class: 'CascadeChoiceParameter', 
         choiceType: 'PT_SINGLE_SELECT', 
-        description: '', filterLength: 1, 
+        description: 'Please select Tosca Test Event', filterLength: 1, 
         filterable: false, 
         name: 'ToscaTestEvent', 
         randomName: 'choice-parameter-137338796016400', 
