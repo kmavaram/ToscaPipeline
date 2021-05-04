@@ -163,7 +163,7 @@ pipeline {
 
      stages {
         stage('Get Tosca available Agents') {
-            when { expression { params.Environment == "null" } }
+            when { expression { params.Environment != "" } }
              steps {
                 script {
                     def Agents = httpRequest 'http://prdasstosca01.ad.linz.govt.nz:81/DistributionServerService/MonitorService.svc/GetAgents'
@@ -176,7 +176,7 @@ pipeline {
  }
  
         stage('Get Tosca available Events') {
-            when { expression { params.Environment == "null" } }
+            when { expression { params.Environment != "" } }
              steps {
                 script {
                     
