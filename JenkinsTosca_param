@@ -111,7 +111,7 @@ properties([
             }else if (Environment.equals("DR-ENV-PG")){
             return["", "DR-ENV-PG-3.23"]
             }else {
-            return["Select Database from drop down"]
+            return["Select Environment from drop down"]
             }''']]], 
         [$class: 'CascadeChoiceParameter', 
         choiceType: 'PT_SINGLE_SELECT', 
