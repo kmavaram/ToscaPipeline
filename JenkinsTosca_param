@@ -38,8 +38,8 @@ properties([
          choiceType: 'PT_SINGLE_SELECT', 
          description: 'Please select Database', 
          filterLength: 1, 
-         filterable: false, name: 
-         'Database', 
+         filterable: false, 
+         name: 'Database', 
          randomName: 'choice-parameter-137338786088700', 
          referencedParameters: 'Environment', 
          script: 
@@ -83,7 +83,7 @@ properties([
         filterable: false, 
         name: 'Landonline_Version', 
         randomName: 'choice-parameter-137338788513600', 
-        referencedParameters: 'Environment', 
+        referencedParameters: 'Environment', 'Database',
         script: [$class: 'GroovyScript', 
         fallbackScript: [classpath: [], 
         sandbox: false, 
