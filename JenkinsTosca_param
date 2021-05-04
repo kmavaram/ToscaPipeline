@@ -1,0 +1,125 @@
+properties([parameters([[$class: 'CascadeChoiceParameter', choiceType: 'PT_SINGLE_SELECT', description: 'Please select Environment', filterLength: 1, filterable: false, name: 'Environment', randomName: 'choice-parameter-137338783980800', referencedParameters: '', script: [$class: 'GroovyScript', fallbackScript: [classpath: [], sandbox: false, script: 'return[\'Error\']'], script: [classpath: [], sandbox: false, script: '''return [
+\'\',
+\'DEV-IFX\',
+\'DEV-PG\',
+\'UAT-IFX\',
+\'UAT-PG\',
+\'TRAINING-IFX\',
+\'TRAINING-PG\',
+\'PRE-PRD-IFX\',
+\'PRE-PRD-PG\',
+\'DR-ENV-IFX\',
+\'DR-ENV-PG\'
+]''']]], [$class: 'CascadeChoiceParameter', choiceType: 'PT_SINGLE_SELECT', description: 'Please select Database', filterLength: 1, filterable: false, name: 'Database', randomName: 'choice-parameter-137338786088700', referencedParameters: 'Environment', script: [$class: 'GroovyScript', fallbackScript: [classpath: [], sandbox: false, script: 'return[\'Error\']'], script: [classpath: [], sandbox: false, script: '''if (Environment.equals("DEV-IFX")){
+return["", "Informix"]
+}else if (Environment.equals("DEV-PG")){
+return["", "PostgreSQL"]
+}else if (Environment.equals("UAT-IFX")){
+return["", "Informix"]
+}else if (Environment.equals("UAT-PG")){
+return["", "PostgreSQL"]
+}else if (Environment.equals("TRAINING-IFX")){
+return["", "Informix"]
+}else if (Environment.equals("TRAINING-PG")){
+return["", "PostgreSQL"]
+}else if (Environment.equals("PRE-PRD-IFX")){
+return["", "Informix"]
+}else if (Environment.equals("PRE-PRD-PG")){
+return["", "PostgreSQL"]
+}else if (Environment.equals("DR-ENV-IFX")){
+return["", "Informix"]
+}else if (Environment.equals("DR-ENV-PG")){
+return["", "PostgreSQL"]
+}else {
+  return["Select an Environment from drop down"]
+}''']]], [$class: 'CascadeChoiceParameter', choiceType: 'PT_SINGLE_SELECT', description: 'Please select Landonline_Version', filterLength: 1, filterable: false, name: 'Landonline_Version', randomName: 'choice-parameter-137338788513600', referencedParameters: 'Environment', script: [$class: 'GroovyScript', fallbackScript: [classpath: [], sandbox: false, script: 'return[\'Error\']'], script: [classpath: [], sandbox: false, script: '''if (Environment.equals("DEV-IFX")){
+return["", "kale-3.23"]
+}else if (Environment.equals("DEV-PG")){
+return["", "gailan-3.23"]
+}else if (Environment.equals("UAT-IFX")){
+return["", "CHIP-IFX-3.23", "MASH-IFX-3.23", "SPUD-IFX-3.23"]
+}else if (Environment.equals("UAT-PG")){
+return["", "CHIP-PG-3.23", "MASH-PG-3.23", "SPUD-PG-3.23"]
+}else if (Environment.equals("TRAINING-IFX")){
+return["", "TRAINING-IFX-3.23"]
+}else if (Environment.equals("TRAINING-PG")){
+return["", "TRAINING-PG-3.23"]
+}else if (Environment.equals("PRE-PRD-IFX")){
+return["", "PRE-PRD-IFX-3.23"]
+}else if (Environment.equals("PRE-PRD-PG")){
+return["", "PRE-PRD-PG-3.23"]
+}else if (Environment.equals("DR-ENV-IFX")){
+return["", "DR-ENV-IFX-3.23"]
+}else if (Environment.equals("DR-ENV-PG")){
+return["", "DR-ENV-PG-3.23"]
+}else {
+  return["Select an Environment from drop down"]
+}''']]], [$class: 'CascadeChoiceParameter', choiceType: 'PT_SINGLE_SELECT', description: '', filterLength: 1, filterable: false, name: 'ToscaTestEvent', randomName: 'choice-parameter-137338796016400', referencedParameters: 'Landonline_Version', script: [$class: 'GroovyScript', fallbackScript: [classpath: [], sandbox: false, script: ''], script: [classpath: [], sandbox: false, script: '''if (Landonline_Version.equals("kale-3.23")){
+return["", "TEvent_IFX_3.23"]
+}else if (Landonline_Version.equals("gailan-3.23")){
+return["", "TEvent_PG_3.23"]
+}else if (Landonline_Version.equals("CHIP-IFX-3.23")){
+return["", "TEvent_CHIP_IFX_3.23"]
+}else if  (Landonline_Version.equals("MASH-IFX-3.23")){
+return["", "TEvent_MASH_IFX_3.23"]
+}else if (Landonline_Version.equals("SPUD-IFX-3.23")){
+return["", "TEvent_SPUD_IFX_3.23"]
+}else if (Landonline_Version.equals("CHIP-PG-3.23")){
+return["", "TEvent_CHIP_PG_3.23"]
+}else if  (Landonline_Version.equals("MASH-PG-3.23")){
+return["", "TEvent_MASH_PG_3.23"]
+}else if (Landonline_Version.equals("SPUD-PG-3.23")){
+return["", "TEvent_SPUD_PG_3.23"]
+}else if (Landonline_Version.equals("TRAINING-IFX-3.23")){
+return["", "TEvent_TRAINING_IFX_3.23"]
+}else if (Landonline_Version.equals("TRAINING-PG-3.23")){
+return["", "TEvent_TRAINING_PG_3.23"]
+}else if (Landonline_Version.equals("PRE-PRD-IFX-3.23")){
+return["", "TEvent_PRE-PRD-IFX-3.23"]
+}else if (Landonline_Version.equals("PRE-PRD-PG-3.23")){
+return["", "TEvent_PRE-PRD-PG-3.23"]
+}else if (Landonline_Version.equals("DR-ENV-IFX-3.23")){
+return["", "TEvent_DR-ENV-IFX-3.23"]
+}else if (Landonline_Version.equals("DR-ENV-PG-3.23")){
+return["", "TEvent_DR-ENV-PG-3.23"]
+}else {
+  return["Select Landonline_Version from drop down"]
+}''']]]])])
+
+pipeline {
+    agent any
+
+   
+    stages {
+stage('Get Tosca available Agents') {
+            when { expression { params.Environment != null } }
+            steps {
+                script {
+                    def Agents = httpRequest 'http://prdasstosca01.ad.linz.govt.nz:81/DistributionServerService/MonitorService.svc/GetAgents'
+                    println("Status: "+Agents.status)
+                     println("Content: "+Agents.content)
+
+              }
+       }
+
+            
+ }
+ 
+ stage('Get Tosca available Events') {
+     when { expression { params.Environment != null } }
+            steps {
+                script {
+                    
+                     def Events = httpRequest 'http://prdasstosca01.ad.linz.govt.nz:81/DistributionServerService/MonitorService.svc/GetTestEvents'
+                     println("Status: "+Events.status)
+                     println("Content: "+Events.content)
+        
+              }
+       }
+
+            
+ }
+ 
+
+}
+}
