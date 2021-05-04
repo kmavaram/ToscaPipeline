@@ -83,7 +83,7 @@ properties([
         filterable: false, 
         name: 'Landonline_Version', 
         randomName: 'choice-parameter-137338788513600', 
-        referencedParameters: 'Environment', 'Database',
+        referencedParameters: 'Environment',
         script: [$class: 'GroovyScript', 
         fallbackScript: [classpath: [], 
         sandbox: false, 
@@ -111,7 +111,7 @@ properties([
             }else if (Environment.equals("DR-ENV-PG")){
             return["", "DR-ENV-PG-3.23"]
             }else {
-            return["Select an Environment from drop down"]
+            return["Select an Database from drop down"]
             }''']]], 
         [$class: 'CascadeChoiceParameter', 
         choiceType: 'PT_SINGLE_SELECT', 
