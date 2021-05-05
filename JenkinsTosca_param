@@ -88,7 +88,9 @@ return["", "TEvent_DR-ENV-PG-3.23"]
 
 pipeline {
     agent any
-
+      environment {
+      PATH = "C:\\WINDOWS\\SYSTEM32"
+    }
      stages {
         stage('Get Tosca available Agents') {
             when { expression { params.ToscaTestEvent != "" } }
