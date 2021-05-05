@@ -137,9 +137,9 @@ pipeline {
 
    
     stages {
-		stage('Get Tosca Agents') {
+        stage('Get Tosca Agents') {
             when { expression { params.Tosca_Agent == true } }
-            steps {
+             steps {
                 script {
                    def Agents = httpRequest 'http://prdasstosca01.ad.linz.govt.nz:81/DistributionServerService/MonitorService.svc/GetAgents'
                      println("Status: "+Agents.status)
@@ -150,10 +150,10 @@ pipeline {
             
  }
  
-		stage('Get Tosca Events') {
-			when { expression { params.Tosca_Event == true } }
-            steps {
-                script {
+        stage('Get Tosca Events') {
+             when { expression { params.Tosca_Event == true } }
+                steps {
+                 script {
                     
                      def Events = httpRequest 'http://prdasstosca01.ad.linz.govt.nz:81/DistributionServerService/MonitorService.svc/GetTestEvents'
                      println("Status: "+Events.status)
@@ -165,54 +165,42 @@ pipeline {
             
  }
  
-		stage('LOL HP Instrument 3.23') {
-            when { expression { params.ToscaTest_Event == 'LOL HP Instrument 3.23' } }
-            steps {
-                script{
+            stage ('Get Tosca Execution'){
+                steps{
+                    script{
+                        
+                        switch(params.ToscaTest_Event) {
+                        case 'LOL HP Instrument 3.23':
+                            //Update All
+                            def APIUpdate = "curl -u AOS_Admin: http://prdasstosca01.ad.linz.govt.nz:81/rest/ToscaCommander/LINZ_Repo/task/UpdateAll"
+                            def APIupdateall = bat (script: APIUpdate, returnStdout: true)
+                            
+                            //Refresh Agents
+                            def APIRefresh = "curl -u AOS_Admin: http://prdasstosca01.ad.linz.govt.nz:81/Rest/ToscaCommander/LINZ_Repo/object/39ea82fd-d952-ce23-0196-3dc0986faf50/task/RefreshAgents"
+                            def APIRegreshAgents = bat (script: APIRefresh, returnStdout: true)
+                            
+                            // Execute Test Event                  
+                            def APIEvent = "curl -u AOS_Admin: http://prdasstosca01.ad.linz.govt.nz:81/Rest/ToscaCommander/LINZ_Repo/object/39fa5e35-639c-7d8d-769a-f394a67d0644/task/ExecuteNow"
+                            def APITestEvent = bat (script: APIEvent, returnStdout: true)
                     
-                    //Update All
-                    def APIUpdate = "curl -u AOS_Admin: http://prdasstosca01.ad.linz.govt.nz:81/rest/ToscaCommander/LINZ_Repo/task/UpdateAll"
-                    def APIupdateall = bat (script: APIUpdate, returnStdout: true)
-                    
-                    //Refresh Agents
-                    def APIRefresh = "curl -u AOS_Admin: http://prdasstosca01.ad.linz.govt.nz:81/Rest/ToscaCommander/LINZ_Repo/object/39ea82fd-d952-ce23-0196-3dc0986faf50/task/RefreshAgents"
-                    def APIRegreshAgents = bat (script: APIRefresh, returnStdout: true)
-                    
-                    // Execute Test Event                  
-                    def APIEvent = "curl -u AOS_Admin: http://prdasstosca01.ad.linz.govt.nz:81/Rest/ToscaCommander/LINZ_Repo/object/39fa5e35-639c-7d8d-769a-f394a67d0644/task/ExecuteNow"
-                    def APITestEvent = bat (script: APIEvent, returnStdout: true)
-             
-    
-          }
-            
-     }
-  }
+                        case 'LOL HP Combined Instrument 3.23':
+                            //Update All
+                            def APIUpdate = "curl -u AOS_Admin: http://prdasstosca01.ad.linz.govt.nz:81/rest/ToscaCommander/LINZ_Repo/task/UpdateAll"
+                            def APIupdateall = bat (script: APIUpdate, returnStdout: true)
+                            
+                            //Refresh Agents
+                            def APIRefresh = "curl -u AOS_Admin: http://prdasstosca01.ad.linz.govt.nz:81/Rest/ToscaCommander/LINZ_Repo/object/39ea82fd-d952-ce23-0196-3dc0986faf50/task/RefreshAgents"
+                            def APIRegreshAgents = bat (script: APIRefresh, returnStdout: true)
+                            
+                            // Execute Test Event                  
+                            def APIEvent = "curl -u AOS_Admin: http://prdasstosca01.ad.linz.govt.nz:81/Rest/ToscaCommander/LINZ_Repo/object/39fbf953-7622-ba0e-985d-00b1b8cfabb8/task/ExecuteNow"
+                            def APITestEvent = bat (script: APIEvent, returnStdout: true)
 
-            
- 
-     stage('LOL HP Combined Instrument 3.23') {
-             when { expression { params.ToscaTest_Event == 'LOL HP Combined Instrument 3.23' } }
-            steps {
-                script {
-
-                    //Update All
-                    def APIUpdate = "curl -u AOS_Admin: http://prdasstosca01.ad.linz.govt.nz:81/rest/ToscaCommander/LINZ_Repo/task/UpdateAll"
-                    def APIupdateall = bat (script: APIUpdate, returnStdout: true)
-                    
-                    //Refresh Agents
-                    def APIRefresh = "curl -u AOS_Admin: http://prdasstosca01.ad.linz.govt.nz:81/Rest/ToscaCommander/LINZ_Repo/object/39ea82fd-d952-ce23-0196-3dc0986faf50/task/RefreshAgents"
-                    def APIRegreshAgents = bat (script: APIRefresh, returnStdout: true)
-                    
-                    // Execute Test Event                  
-                    def APIEvent = "curl -u AOS_Admin: http://prdasstosca01.ad.linz.govt.nz:81/Rest/ToscaCommander/LINZ_Repo/object/39fbf953-7622-ba0e-985d-00b1b8cfabb8/task/ExecuteNow"
-                    def APITestEvent = bat (script: APIEvent, returnStdout: true)
-                     
-        
-
+                    }
+                        
+                    }
+                }
             }
-		}
-
-     }
- 
+                 
 }
 }
