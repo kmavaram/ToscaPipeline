@@ -32,7 +32,8 @@ return["", "Informix"]
 return["", "PostgreSQL"]
 }else {
   return["Select an Environment from drop down"]
-}''']]], [$class: 'CascadeChoiceParameter', choiceType: 'PT_SINGLE_SELECT', description: 'Please select Landonline_Version', filterLength: 1, filterable: false, name: 'Landonline_Version', randomName: 'choice-parameter-137338788513600', referencedParameters: 'Environment', script: [$class: 'GroovyScript', fallbackScript: [classpath: [], sandbox: false, script: 'return[\'Error\']'], script: [classpath: [], sandbox: false, script: '''if (Environment.equals("DEV-IFX")){
+}''']]], [$class: 'CascadeChoiceParameter', choiceType: 'PT_SINGLE_SELECT',
+          description: 'Please select Landonline_Version', filterLength: 1, filterable: false, name: 'Landonline_Version', randomName: 'choice-parameter-137338788513600', referencedParameters: 'Environment', script: [$class: 'GroovyScript', fallbackScript: [classpath: [], sandbox: false, script: 'return[\'Error\']'], script: [classpath: [], sandbox: false, script: '''if (Environment.equals("DEV-IFX")){
 return["", "kale-3.23"]
 }else if (Environment.equals("DEV-PG")){
 return["", "gailan-3.23"]
@@ -89,12 +90,12 @@ return["", "TEvent_DR-ENV-PG-3.23"]
 pipeline {
     agent any
       environment {
-        
+
       PATH = "C:\\WINDOWS\\SYSTEM32"
     }
      stages {
         stage('Get Tosca available Agents') {
-            when { expression { params.ToscaTestEvent != "" } }
+            when { expression { params.Environment != "" } }
              steps {
                 script {
                     def Agents = httpRequest 'http://prdasstosca01.ad.linz.govt.nz:81/DistributionServerService/MonitorService.svc/GetAgents'
@@ -121,7 +122,7 @@ pipeline {
  }
  
       stage('TEvent_IFX_3.23') {
-            when { expression { params.ToscaTestEvent == 'TEvent_IFX_3.23' } }
+            when { expression { params.ToscaTestEvent == "TEvent_IFX_3.23" } }
             steps {
                 script{
                     
@@ -144,7 +145,7 @@ pipeline {
   }
 
      stage('TEvent_PG_3.23') {
-             when { expression { params.ToscaTestEvent == 'TEvent_PG_3.23' } }
+             when { expression { params.ToscaTestEvent == "TEvent_PG_3.23" } }
             steps {
                 script {
 
