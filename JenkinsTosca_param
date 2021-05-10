@@ -101,11 +101,11 @@ pipeline {
                     def Agents = httpRequest 'http://prdasstosca01.ad.linz.govt.nz:81/DistributionServerService/MonitorService.svc/GetAgents'
                     println("Status: "+Agents.status)
                      println("Content: "+Agents.content)
-                     writeFile Afile: 'Agents.txt', text: Agents.content
-                     def Afile = readFile('Agents.txt')
-                     def Alines = Afile.readLines()
+                     writeFile file: 'Agents.txt', text: Agents.content
+                     def file = readFile('Agents.txt')
+                     def lines = file.readLines()
                      file.eachLine {line, lineNo->
-                     println "${Alines}"
+                     println "${lines}"
                      }
 
               }
@@ -121,11 +121,11 @@ pipeline {
                      def Events = httpRequest 'http://prdasstosca01.ad.linz.govt.nz:81/DistributionServerService/MonitorService.svc/GetTestEvents'
                      println("Status: "+Events.status)
                      println("Content: "+Events.content)
-                      writeFile Efile: 'Events.txt', text: Events.content
-                     def Efile = readFile('Events.txt')
-                     def Elines = Efile.readLines()
+                      writeFile file: 'Events.txt', text: Events.content
+                     def file = readFile('Events.txt')
+                     def lines = file.readLines()
                      Efile.eachLine {line, lineNo->
-                     println "${Elines}"
+                     println "${lines}"
                   }
         
               }
