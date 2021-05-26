@@ -106,7 +106,7 @@ pipeline {
                      def lines = file.readLines()
                      file.eachLine {line, lineNo->
                      println "${lines}"
-                     
+                     }
 
               }
        }
@@ -126,7 +126,7 @@ pipeline {
                      def lines = file.readLines()
                      file.eachLine {line, lineNo->
                      println "${lines}"
-                     
+                     }
         
               }
        }
@@ -176,11 +176,10 @@ pipeline {
         
 
             }
-		}
+	   	}
 
      }
 
 
 }
 }
-     }
