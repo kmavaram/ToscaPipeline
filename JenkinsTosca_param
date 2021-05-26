@@ -104,7 +104,6 @@ pipeline {
                      writeFile file: 'Agents.txt', text: Agents.content
                      def file = readFile('Agents.txt')
                      def lines = file.readLines()
-                     file.eachLine {line, lineNo->
                      println "${lines}"
                      }
 
@@ -124,7 +123,6 @@ pipeline {
                       writeFile file: 'Events.txt', text: Events.content
                      def file = readFile('Events.txt')
                      def lines = file.readLines()
-                     file.eachLine {line, lineNo->
                      println "${lines}"
                   }
         
