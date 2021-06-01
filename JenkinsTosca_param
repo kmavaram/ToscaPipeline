@@ -151,7 +151,7 @@ pipeline {
                     def APIEvent = "curl -i -u AOS_Admin: http://prdasstosca01.ad.linz.govt.nz:81/Rest/ToscaCommander/LINZ_Repo/object/39fcb7b6-e0d6-51bd-9bc1-28d55c02f6b4/task/ExecuteNow"
                     def APITestEvent = bat (script: APIEvent, returnStdout: true)
                     println("Status: "+APITestEvent.status)
-                    //writeFile file: 'APITestEvent.txt', text: APITestEvent.content
+                    writeFile file: 'APITestEvent.txt', text: APITestEvent.content
 
           }
             
@@ -174,7 +174,7 @@ pipeline {
                     // Execute Test Event                  
                     def APIEvent = "curl -i -u AOS_Admin: http://prdasstosca01.ad.linz.govt.nz:81/Rest/ToscaCommander/LINZ_Repo/object/39fcb7b6-e0d6-51bd-9bc1-28d55c02f6b4/task/ExecuteNow"
                     def APITestEvent = bat (script: APIEvent, returnStdout: true)
-                     println("Status: "+APITestEvent.status)
+                    writeFile file: 'APITestEvent.txt', text: APITestEvent.content
 
 
             }
