@@ -100,13 +100,13 @@ pipeline {
                 script {
                     def Agents = httpRequest 'http://prdasstosca01.ad.linz.govt.nz:81/DistributionServerService/MonitorService.svc/GetAgents'
                     println("Status: "+Agents.status)
-                     println("Content: "+Agents.content)
-                     writeFile file: 'Agents.txt', text: Agents.content
-                     def file = readFile('Agents.txt')
-                     def lines = file.readLines()
-                     file.eachLine {line, lineNo->
-                     println "${lines}"
-                     }
+                    println("Content: "+Agents.content)
+                    writeFile file: 'Agents.txt', text: Agents.content
+                    def file = readFile('Agents.txt')
+                    def lines = file.readLines()
+                    file.eachLine {line, lineNo->
+                    println "${lines}"
+                    }
 
               }
        }
@@ -142,6 +142,7 @@ pipeline {
                     def APIUpdate = "curl -u AOS_Admin: http://prdasstosca01.ad.linz.govt.nz:81/rest/ToscaCommander/LINZ_Repo/task/UpdateAll"
                     def APIupdateall = bat (script: APIUpdate, returnStdout: true)
                     
+                    
                     //Refresh Agents
                     def APIRefresh = "curl -u AOS_Admin: http://prdasstosca01.ad.linz.govt.nz:81/Rest/ToscaCommander/LINZ_Repo/object/39ea82fd-d952-ce23-0196-3dc0986faf50/task/RefreshAgents"
                     def APIRegreshAgents = bat (script: APIRefresh, returnStdout: true)
@@ -149,6 +150,9 @@ pipeline {
                     // Execute Test Event                  
                     def APIEvent = "curl -u AOS_Admin: http://prdasstosca01.ad.linz.govt.nz:81/Rest/ToscaCommander/LINZ_Repo/object/39fcb7b6-e0d6-51bd-9bc1-28d55c02f6b4/task/ExecuteNow"
                     def APITestEvent = bat (script: APIEvent, returnStdout: true)
+                    println("Status: "+APIEvent.status)
+                    println("Content: "+APIEvent.content)
+                    writeFile file: 'APIEvent.txt', text: APIEvent.content
              
     
           }
@@ -172,6 +176,9 @@ pipeline {
                     // Execute Test Event                  
                     def APIEvent = "curl -u AOS_Admin: http://prdasstosca01.ad.linz.govt.nz:81/Rest/ToscaCommander/LINZ_Repo/object/39fcb7b6-e0d6-51bd-9bc1-28d55c02f6b4/task/ExecuteNow"
                     def APITestEvent = bat (script: APIEvent, returnStdout: true)
+                    println("Status: "+APIEvent.status)
+                    println("Content: "+APIEvent.content)
+                    writeFile file: 'APIEvent.txt', text: APIEvent.content
                      
         
 
