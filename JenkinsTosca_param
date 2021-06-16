@@ -161,8 +161,7 @@ pipeline {
 
 
           }
-            
-     }
+                 }
   }
 
      stage('TEvent_PG_3.23') {
